@@ -1,5 +1,7 @@
 import { RenderingInfo } from '#/ui/rendering-info';
 
+export const runtime = 'edge';
+
 export default async function Page({ params }: { params: { id: string } }) {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`,

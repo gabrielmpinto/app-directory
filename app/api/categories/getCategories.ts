@@ -6,8 +6,21 @@ import type { Category } from './category';
 // doesn't currently use sensitive environment variables, it's
 // good practice to add `server-only` preemptively.
 import 'server-only';
+import { headers } from 'next/headers';
+
+export const runtime = 'edge';
 
 export async function getCategories({ parent }: { parent?: string } = {}) {
+  try {
+    console.log('headers', headers());
+    const headersList = headers();
+    console.log('headers', headersList);
+    const referer = headersList.get('referer');
+    console.log('referer', referer);
+  } catch (e) {
+    // @ts-ignore
+    console.log('error', e.message);
+  }
   const res = await fetch(
     `https://app-playground-api.vercel.app/api/categories${
       parent ? `?parent=${parent}` : ''

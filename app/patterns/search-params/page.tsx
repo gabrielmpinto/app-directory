@@ -22,7 +22,10 @@ const options = [
   },
 ];
 
+export const runtime = 'edge';
+export const revalidate = false;
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 export default async function Page({ searchParams }: { searchParams: any }) {
   return (

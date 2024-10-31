@@ -1,6 +1,8 @@
 import { getCategory } from '#/app/api/categories/getCategories';
 import { HooksClient } from '#/app/hooks/_components/router-context';
 
+export const runtime = 'edge';
+
 export default async function Page({
   params,
 }: {

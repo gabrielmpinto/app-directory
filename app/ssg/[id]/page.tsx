@@ -6,6 +6,8 @@ export async function generateStaticParams() {
   return [{ id: '1' }, { id: '2' }];
 }
 
+export const runtime = 'edge';
+
 export default async function Page({ params }: { params: { id: string } }) {
   if (Number(params.id) >= 100) {
     notFound();

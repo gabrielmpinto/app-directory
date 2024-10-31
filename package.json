@@ -2,6 +2,11 @@
   "private": true,
   "packageManager": "pnpm@8.2.0",
   "scripts": {
+    "build:open-next": "node ~/repos/fleek/open-next/packages/open-next/dist/index.js build --skip-build",
+    "build:next-on-pages:local": "npx ~/repos/next/next-on-pages/packages/next-on-pages/dist/index.js",
+    "build:next-on-pages": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev",
+    "deploy": "npm run pages:build && wrangler pages deploy",
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
@@ -11,27 +16,24 @@
     "start": "next start",
     "test": "pnpm prettier:check && pnpm lint"
   },
-  "git": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*": "prettier --write --ignore-unknown"
-  },
   "dependencies": {
     "@heroicons/react": "2.1.3",
+    "@vercel/og": "0.6.3",
     "clsx": "2.1.1",
     "date-fns": "3.6.0",
     "dinero.js": "2.0.0-alpha.10",
     "ms": "3.0.0-canary.1",
-    "next": "14.3.0-canary.33",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "next": "14.2.15",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "server-only": "0.0.1",
     "styled-components": "6.1.8",
-    "use-count-up": "3.0.1",
-    "vercel": "34.0.0"
+    "use-count-up": "3.0.1"
   },
   "devDependencies": {
+    "@fleek-platform/functions-esbuild-config": "0.0.8",
+    "@fleek-platform/next": "link:/Users/gabrielpinto/repos/fleek-platform/fleek-next",
+    "@opennextjs/cloudflare": "link:/Users/gabrielpinto/repos/next/opennextjs-cloudflare/packages/cloudflare",
     "@tailwindcss/forms": "0.5.7",
     "@tailwindcss/typography": "0.5.12",
     "@types/ms": "0.7.34",
@@ -40,6 +42,7 @@
     "@types/react-dom": "18.2.25",
     "@vercel/git-hooks": "1.0.0",
     "autoprefixer": "10.4.19",
+    "esbuild": "0.24.0",
     "eslint": "9.0.0",
     "eslint-config-next": "14.2.2",
     "lint-staged": "15.2.2",

@@ -1,5 +1,7 @@
 import { Breadcrumbs } from '#/app/patterns/breadcrumbs/_components/breadcrumbs';
 
+export const runtime = 'edge';
+
 export default function Page({
   params: { all },
 }: {
@@ -14,7 +16,7 @@ export default function Page({
       text: 'Home',
       href: '/patterns/breadcrumbs',
     },
-    ...all.map((param) => ({
+    ...(all ?? []).map((param) => ({
       text: param,
       href: `/patterns/breadcrumbs/${param}`,
     })),

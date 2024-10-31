@@ -6,8 +6,20 @@ import type { Review } from './review';
 // doesn't currently use sensitive environment variables, it's
 // good practise to add `server-only` preemptively.
 import 'server-only';
+import { headers } from 'next/headers';
 
-export async function getReviews() {
+export async function GET() {
+  try {
+    console.log('headers', headers());
+    const headersList = headers();
+    console.log('headers', headersList);
+    const referer = headersList.get('referer');
+    console.log('referer', referer);
+  } catch (e) {
+    // @ts-ignore
+    console.log('error', e.message);
+  }
+
   const res = await fetch(`https://app-playground-api.vercel.app/api/reviews`);
 
   if (!res.ok) {
